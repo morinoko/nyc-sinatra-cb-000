@@ -1,3 +1,3 @@
-class Landmark <ActiveRecord::Base
+class Landmark <　ActiveRecord::Base
 
 end
