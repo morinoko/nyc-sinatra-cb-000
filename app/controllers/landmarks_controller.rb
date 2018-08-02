@@ -5,7 +5,9 @@ class LandmarksController < ApplicationController
   end
 
   post '/landmarks' do
+    @landmark = Landmark.create(params[:landmark])
 
+    redirect to "landmarks/#{@landmark.id}"
   end
 
   get '/landmarks/new' do
@@ -25,6 +27,9 @@ class LandmarksController < ApplicationController
   end
 
   post '/landmarks/:id' do
+    @landmark = Landmark.find_by_id(params[:id])
+    @landmark.update(params[:landmark])
 
+    redirect to "landmarks/#{@landmark.id}"
   end
 end
