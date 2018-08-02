@@ -4,6 +4,13 @@ class FiguresController < ApplicationController
     erb :'figures/index'
   end
 
+  get '/figures/new' do
+    @landmarks = Landmark.all
+    @titles = Title.all
+
+    erb :'figures/new'
+  end
+
   post '/figures' do
     @figure = Figure.new(params[:figure])
 
@@ -20,13 +27,6 @@ class FiguresController < ApplicationController
     @figure.save
 
     redirect to "figures/#{@figure.id}"
-  end
-
-  get '/figures/new' do
-    @landmarks = Landmark.all
-    @titles = Title.all
-
-    erb :'figures/new'
   end
 
   get '/figures/:id' do
